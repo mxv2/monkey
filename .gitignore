@@ -1,0 +1,7 @@
+# User-specific stuff
+.idea/
+
+# General macOS
+.DS_Store
+.AppleDouble
+.LSOverride
