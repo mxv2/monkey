@@ -11,6 +11,7 @@ import (
 type ObjectType string
 
 const (
+	BUILTIN_OBJ      = "BUILTIN"
 	FUNCTION_OBJ     = "FUNCTION"
 	INTEGER_OBJ      = "INTEGER"
 	BOOLEAN_OBJ      = "BOOLEAN"
@@ -23,6 +24,20 @@ const (
 type Object interface {
 	Type() ObjectType
 	Inspect() string
+}
+
+type BuiltinFunction func(args ...Object) Object
+
+type Builtin struct {
+	Fn BuiltinFunction
+}
+
+func (b *Builtin) Type() ObjectType {
+	return BUILTIN_OBJ
+}
+
+func (b *Builtin) Inspect() string {
+	return "builtin object"
 }
 
 type Function struct {
